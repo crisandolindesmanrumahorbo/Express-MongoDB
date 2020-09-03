@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser'
-import connectDatabase from './src/config/database'
-import studentRoutes from './src/api/students/student.route'
+import connectDatabase from './src/server/config/database'
+import studentRoutes from './src/server/api/students/student.route'
 
 const app = express();
 const port = 3000;
