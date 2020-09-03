@@ -1,6 +1,6 @@
 import Student from './student.dao'
 
-exports.createStudent = (request, response, next) =>{
+export function createStudent(request, response) {
     const student = {
         name: request.body.name
     };
@@ -11,7 +11,7 @@ exports.createStudent = (request, response, next) =>{
     });
 }
 
-exports.getStudents = (request, response, next) => {
+export function getStudents(request, response) {
     Student.get({}, (err, students) => {
         if (err)
             response.send(err);
@@ -19,7 +19,7 @@ exports.getStudents = (request, response, next) => {
     });
 }
 
-exports.getStudent = (request, response, next) => {
+export function getStudent(request, response) {
     Student.get({_id: request.params.student_id}, (err, student) => {
         if (err)
             response.send(err);
@@ -27,7 +27,7 @@ exports.getStudent = (request, response, next) => {
     });
 }
 
-exports.deleteStudent = (request, response, next) => {
+export function deleteStudent(request, response) {
     Student.delete({_id: request.params.student_id}, (err) => {
         if (err)
             response.send(err);
@@ -35,7 +35,7 @@ exports.deleteStudent = (request, response, next) => {
     });
 }
 
-exports.updateStudent = (request, response,next) => {
+export function updateStudent(request, response) {
     const student = {
         name: request.body.name
     }

@@ -1,4 +1,4 @@
-import { url } from './properties'
+import {url} from './properties'
 import mongoose from 'mongoose';
 
 module.exports = () => {
@@ -16,14 +16,14 @@ module.exports = () => {
     });
 
     mongoose.connection.on('error', (err) => {
-        console.log("Mongoose default connection has occured "+err+" error");
+        console.log("Mongoose default connection has occured " + err + " error");
     });
 
     mongoose.connection.on('disconnected', () => {
         console.log("Mongoose default connection is disconnected");
     });
 
-    process.on('SIGINT', function(){
+    process.on('SIGINT', function () {
         mongoose.connection.close(() => {
             console.log("Mongoose default connection is disconnected due to application termination");
             process.exit(0)
