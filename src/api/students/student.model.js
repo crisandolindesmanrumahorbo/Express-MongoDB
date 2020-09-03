@@ -6,5 +6,4 @@ const studentSchema = new mongoose.Schema({
     planet: {type: String, default: 'Earth'}
 });
 
-// module.exports = mongoose.model('Student', studentSchema);
 module.exports = studentSchema;

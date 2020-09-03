@@ -1,17 +1,17 @@
 import Student from './student.dao'
 
-export function createStudent(request, response) {
+exports.createStudent = (request, response, next) =>{
     const student = {
         name: request.body.name
     };
-    Student.create(student, (err) =>{
+    Student.create(student, (err) => {
         if (err)
             response.send(err);
         response.json({message: "Student created"});
     });
 }
 
-export function getStudents(request, response) {
+exports.getStudents = (request, response, next) => {
     Student.get({}, (err, students) => {
         if (err)
             response.send(err);
@@ -19,27 +19,27 @@ export function getStudents(request, response) {
     });
 }
 
-export function getStudent(request, response) {
-    Student.getById({name: request.params.name}, (err, student) => {
+exports.getStudent = (request, response, next) => {
+    Student.get({_id: request.params.student_id}, (err, student) => {
         if (err)
             response.send(err);
         response.json(student);
     });
 }
 
-export function removeStudent(request, response) {
-    Student.deleteById({_id: request.params.id}, (err) => {
+exports.deleteStudent = (request, response, next) => {
+    Student.delete({_id: request.params.student_id}, (err) => {
         if (err)
             response.send(err);
         response.json("Student deleted");
     });
 }
 
-export function updateStudent(request, response) {
+exports.updateStudent = (request, response,next) => {
     const student = {
         name: request.body.name
     }
-    Student.updateById({_id: request.params.id}, student, err => {
+    Student.update({_id: request.params.student_id}, student, err => {
         if (err)
             response.send(err)
         response.json("Student updated")

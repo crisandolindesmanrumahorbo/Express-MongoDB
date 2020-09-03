@@ -1,28 +1,28 @@
 import mongoose from 'mongoose'
 import studentSchema from './student.model'
 
-const studentModel = mongoose.model('Student', studentSchema);
 studentSchema.statics = {
-    create : (data, result) => {
-        const student = new studentModel(data);
+    create: function(data, result) {
+        const student = new this(data);
         student.save(result)
     },
 
-    get: (filter, result) => {
+    get: function(filter, result) {
         this.find(filter, result);
     },
 
-    getById: (filter, result) => {
+    getById: function(filter, result) {
         this.findOne(filter, result);
     },
 
-    deleteById: (filter, result) => {
+    delete:function (filter, result) {
         this.findOneAndDelete(filter, result)
     },
 
-    updateById: (filter, updateData, result) => {
+    update: function (filter, updateData, result) {
         this.findOneAndUpdate(filter, {$set: updateData}, {new: true}, result);
     }
 };
 
+const studentModel = mongoose.model('Student', studentSchema);
 module.exports = studentModel;
